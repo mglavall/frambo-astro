@@ -97,7 +97,12 @@ export default defineConfig({
                 label: "Description",
                 required: false,
               },
-              { name: "body", widget: "markdown", label: "Post Body" },
+              {
+                name: "body",
+                widget: "markdown",
+                label: "Post Body",
+                required: false,
+              },
             ],
           },
         ],

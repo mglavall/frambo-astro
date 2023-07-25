@@ -11,7 +11,7 @@ import { SITE } from "../config";
 // It will run during the build, but never in the browser.
 // All variables are available to use in the HTML template below.
 let { title } = SITE;
-let description = "The perfect starter for your perfect blog.";
+let description = "Environmental Journalist";
 let permalink = "https://example.com/";
 
 // Data Fetching: List all Markdown posts in the repo.
@@ -79,7 +79,7 @@ allArticles = allArticles.sort(
   </head>
 
   <body>
-    <BlogHeader />
+    <!-- <BlogHeader /> -->
     <div class="wrapper">
       <main class="content">
         <section class="intro">
@@ -87,7 +87,7 @@ allArticles = allArticles.sort(
           <p>{description}</p>
         </section>
         <section aria-label="Blog post list">
-          {allPosts.map((p) => <BlogPostPreview post={p} />)}
+          <!-- {allPosts.map((p) => <BlogPostPreview post={p} />)} -->
           {allArticles.map((p) => <ArticleLink post={p} />)}
         </section>
       </main>

@@ -87,13 +87,10 @@ allArticles = allArticles.sort(
           <p>{description}</p>
         </section>
         <section aria-label="Blog post list">
-          <!-- {allPosts.map((p) => <BlogPostPreview post={p} />)} -->
+          {allPosts.map((p) => <BlogPostPreview post={p} />)}
           {allArticles.map((p) => <ArticleLink post={p} />)}
         </section>
       </main>
-      <footer>
-        <a href="/admin">Admin Dashboard 🔐</a>
-      </footer>
     </div>
   </body>
 </html>

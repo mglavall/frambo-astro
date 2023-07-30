@@ -15,9 +15,14 @@ let description = "Environmental Journalist";
 let permalink = "https://example.com/";
 
 // Data Fetching: List all Markdown posts in the repo.
+let allPosts = null;
+try {
+  allPosts = await Astro.glob("./posts/*.md");
+} catch (e) {
+  console.log("No posts found", e);
+}
 
-let allPosts = await Astro.glob("./posts/*.md");
-allPosts = allPosts.sort(
+allPosts = allPosts?.sort(
   (a, b) =>
     new Date(b.frontmatter.publishDate).valueOf() -
     new Date(a.frontmatter.publishDate).valueOf()

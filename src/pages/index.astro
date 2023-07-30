@@ -15,7 +15,7 @@ let description = "Environmental Journalist";
 let permalink = "https://example.com/";
 
 // Data Fetching: List all Markdown posts in the repo.
-let allPosts = null;
+let allPosts = [];
 try {
   allPosts = await Astro.glob("./posts/*.md");
 } catch (e) {
@@ -29,11 +29,14 @@ allPosts = allPosts?.sort(
 );
 
 let allArticles = await Astro.glob("./articles/*.md");
-allArticles = allArticles.sort(
+
+let allStuff = [...allArticles, ...allPosts].sort(
   (a, b) =>
     new Date(b.frontmatter.publishDate).valueOf() -
     new Date(a.frontmatter.publishDate).valueOf()
 );
+
+console.log(allStuff[0].frontmatter);
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
@@ -92,8 +95,15 @@ allArticles = allArticles.sort(
           <p>{description}</p>
         </section>
         <section aria-label="Blog post list">
-          {allPosts.map((p) => <BlogPostPreview post={p} />)}
-          {allArticles.map((p) => <ArticleLink post={p} />)}
+          {
+            allStuff.map((p) =>
+              p.frontmatter.articleURL ? (
+                <ArticleLink post={p} />
+              ) : (
+                <BlogPostPreview post={p} />
+              )
+            )
+          }
         </section>
       </main>
     </div>

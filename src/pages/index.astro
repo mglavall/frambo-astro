@@ -45,7 +45,6 @@ console.log(allStuff[0].frontmatter);
 <html lang="en">
   <head>
     <BaseHead {title} {description} {permalink} />
-
     <style>
       header {
         width: 100%;
@@ -85,7 +84,6 @@ console.log(allStuff[0].frontmatter);
       }
     </style>
   </head>
-
   <body>
     <!-- <BlogHeader /> -->
     <div class="wrapper">
@@ -107,5 +105,17 @@ console.log(allStuff[0].frontmatter);
         </section>
       </main>
     </div>
+    <script
+      src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"
+      is:inline
+    ></script>
+    <script is:inline>
+      kofiWidgetOverlay.draw("resistance_voices", {
+        type: "floating-chat",
+        "floating-chat.donateButton.text": "Support me",
+        "floating-chat.donateButton.background-color": "#00b9fe",
+        "floating-chat.donateButton.text-color": "#fff",
+      });
+    </script>
   </body>
 </html>

@@ -72,6 +72,11 @@ export default defineConfig({
             fields: [
               { name: "title", widget: "string", label: "Article Title" },
               {
+                name: "image",
+                widget: "image",
+                label: "Article Image Preview",
+              },
+              {
                 name: "publishDate",
                 widget: "datetime",
                 format: "DD MMM YYYY",

@@ -1,12 +1,17 @@
 ---
+import { Image } from 'astro:assets';
 export interface Props {
   post: any;
 }
+
 
 const { post } = Astro.props;
 ---
 
 <article class="post-preview">
+  <div style={{overflow:'hidden', width: '100%', maxHeight: '100'}}>
+    {post.frontmatter.image && <Image src={post.frontmatter.image} alt="hola" width={300} height={100} style={{objectFit: "cover"}}></Image>}
+  </div>
   <header>
     <p class="publish-date">{post.frontmatter.publishDate}</p>
     <a href={post.frontmatter.articleURL}
@@ -22,7 +27,13 @@ const { post } = Astro.props;
     margin-top: 1rem;
   }
 
+  h1 {
+      font-size: 20px;
+  }
+
   .post-preview {
+    min-width: 200px;
+    max-width: 300px;
     padding-bottom: 2rem;
     margin-bottom: 2rem;
     border-bottom: 4px solid var(--theme-divider);
@@ -35,7 +46,9 @@ const { post } = Astro.props;
     justify-content: center;
     padding-bottom: 2rem;
     text-align: left;
+
   }
+
 
   .title,
   .author,
@@ -50,7 +63,7 @@ const { post } = Astro.props;
   }
 
   .title {
-    font-size: 2.25rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--theme-text);
   }

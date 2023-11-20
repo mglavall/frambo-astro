@@ -1,23 +1,20 @@
 ---
-// Component Imports
-import ArticleLink from "../components/ArticleLink.astro";
-import BaseHead from "../components/BaseHead.astro";
-import BlogHeader from "../components/BlogHeader.astro";
-import BlogPostPreview from "../components/BlogPostPreview.astro";
-import HomeList from "../components/HomeList.astro";
-import Navigation from "../components/Navigation.astro";
-import { SITE } from "../config";
-
-// Component Script:
-// You can write any JavaScript/TypeScript that you'd like here.
-// It will run during the build, but never in the browser.
-// All variables are available to use in the HTML template below.
+import BaseHead from '../../components/BaseHead.astro';
+import { SITE } from '../../config';
+import HomeList from "../../components/HomeList.astro";
+import Navigation from "../../components/Navigation.astro";
 let { title } = SITE;
 let description = "Environmental Journalist";
 let permalink = "https://francescotorri.com/";
 
-// Full Astro Component Syntax:
-// https://docs.astro.build/core-concepts/astro-components/
+export function getStaticPaths () {
+ return [
+    {params: {lang: 'en'}},
+    {params: {lang: 'it'}},
+  ];
+}
+
+const { lang } = Astro.params;
 ---
 
 <html lang="en">
@@ -69,7 +66,6 @@ let permalink = "https://francescotorri.com/";
     </style>
   </head>
   <body>
-    <!-- <BlogHeader /> -->
     
     <div class="wrapper">
       
@@ -81,7 +77,7 @@ let permalink = "https://francescotorri.com/";
         </section>
        
         <section aria-label="Blog post list" class="articleList">
-          <HomeList lang="all" />
+          <HomeList />
         </section>
       </main>
     </div>

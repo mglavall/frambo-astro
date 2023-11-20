@@ -1,0 +1,20 @@
+
+---
+const lang = Astro.params.lang || "all";
+
+---
+<nav class="nav">
+    <style>
+        .nav{
+            display: flex;
+            gap: 12px;
+            .selected{
+                text-decoration: underline;
+            }
+        }
+    </style>
+
+<a href="/" class={lang === "all" && "selected"}>All</a>
+<a href="en" class="en">Articles in English</button>
+<a href="it"} class="it">Articles in Italian</button>
+</nav>

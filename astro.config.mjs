@@ -72,9 +72,17 @@ export default defineConfig({
             fields: [
               { name: "title", widget: "string", label: "Article Title" },
               {
+                label: "Language",
+                name: "language",
+                widget: "select",
+                options: ["en", "it"],
+                default: "en",
+              },
+              {
                 name: "image",
                 widget: "image",
                 label: "Article Image Preview",
+                required: false,
               },
               {
                 name: "publishDate",

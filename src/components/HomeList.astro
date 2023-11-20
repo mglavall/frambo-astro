@@ -1,0 +1,49 @@
+---
+import ArticleLink from './ArticleLink.astro';
+import BlogPostPreview from './BlogPostPreview.astro';
+
+const { lang = 'all' } = Astro.params;
+console.log(lang);
+// Data Fetching: List all Markdown posts in the repo.
+let allPosts = [];
+try {
+  allPosts = await Astro.glob("../pages/posts/*.md");
+} catch (e) {
+  console.log("No posts found", e);
+}
+
+allPosts = allPosts?.sort(
+  (a, b) =>
+    new Date(b.frontmatter.publishDate).valueOf() -
+    new Date(a.frontmatter.publishDate).valueOf()
+);
+let allArticles = [];
+try {
+  allArticles = (await Astro.glob("../pages/articles/*.md")).filter(article=>{
+    console.log(article.frontmatter);
+    return article.frontmatter.language === lang || lang === 'all'
+    });
+   
+} catch (e) {
+  console.log("No posts found", e);
+}
+
+
+
+
+let allStuff = [...allArticles, ...allPosts].sort(
+  (a, b) =>
+    new Date(b.frontmatter.publishDate).valueOf() -
+    new Date(a.frontmatter.publishDate).valueOf()
+);
+---
+<>
+{allStuff.map((p) =>
+    p.frontmatter.articleURL ? (
+    <ArticleLink post={p} />
+    ) : (
+    <BlogPostPreview post={p} />
+    )
+)}
+</>
+  
